@@ -1,53 +1,290 @@
 //typography
 @import url("https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500&amp;subset=cyrillic");
 
-body{
-  font-family: $font-family;
-  background: $color-white;
-  font-weight: 300;
-  font-size: $font-size;
-  line-height: $line-height;
+body {
+    font-family: $font-family;
+    background: $color-white;
+    font-weight: 300;
+    font-size: $font-size;
+    line-height: $line-height;
 }
 
-p{
-
+img{
+    max-width: 100%;
 }
 
-a{
-  color: $color-black;
-  @extend .underline;
+p {
+    &+p{
+        margin-top: 35px;
+    }
 }
 
-h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5{
-  @extend .uppercase;
+strong{
+    font-weight: 500;
 }
 
-h1, .h1{
-  font-size: $font-size-xl;
+a {
+    color: $color-black;
+    @extend .underline;
+    @include animate(.1s);
+    &:hover{
+        color: $color-orange !important;
+        @extend .notunderline;
+    }
 }
 
-h2, .h2{
-  font-size: $font-size-l;
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
+    @extend .uppercase;
 }
 
-h3, .h3{
-  font-size: $font-size-b;
+h1, .h1 {
+    font-size: $font-size-xl;
+    line-height: 65px;
+    margin-bottom: 35px;
 }
 
-h4, .h4{
-  font-size: $font-size-m;
+h2, .h2 {
+    font-size: $font-size-l;
+    margin-bottom: 40px;
 }
 
-h5, .h5{
-  font-size: $font-size;
+h3, .h3 {
+    font-size: $font-size-b;
 }
 
+h4, .h4 {
+    font-size: $font-size-m;
+}
+
+h5, .h5 {
+    font-size: $font-size;
+}
+
+ul{
+    &.styler{
+        li{
+            position: relative;
+            padding-left: 15px;
+            &:before{
+                @include icon('\f105');
+                font-size: $font-size-m;
+                position: absolute;
+                margin-left: -15px;
+            }
+        }
+    }
+}
 
 //forms
+input[type=text]{
+    font-size: $font-size;
+    background: none;
+    border: none;
+    height: 38px;
+    line-height: 38px;
+    outline: none;
+    width: 100%;
+    text-indent: 15px;
+    color: $color-mediumgray;
+    border-bottom: 1px solid $color-mediumgray;
+
+    &+.help{
+        opacity: 0;
+        color: $color-gray;
+        font-size: $font-size-xs;
+        left: 15px;
+        display: block;
+        position: absolute;
+        top: -12px;
+        @include animate(.1s);
+    }
+
+    &:focus{
+        border-color: $color-black;
+        color: $color-black;
+        &+.help{
+            opacity: 1;
+        }
+    }
+
+    &.error{
+        border-color: $color-red;
+        color: $color-red;
+
+        & + .error, & + .help + .error{
+            color: $color-red;
+            font-size: $font-size-s;
+            padding-left: 15px;
+            display: block;
+            position: relative;
+            &:before{
+                content: '\f00d';
+                display: inline-block;
+                font: normal normal normal 14px/1 FontAwesome;
+                color: $color-red;
+                position: absolute;
+                right: 15px;
+                margin-bottom: 13px;
+                bottom:100%;
+            }
+        }
+    }
+
+    &.success{
+        border-color: $color-green;
+        color: $color-green;
+
+        & + .success, & + .help + .success{
+            color: $color-green;
+            font-size: $font-size-s;
+            padding-left: 15px;
+            display: block;
+            position: relative;
+            &:before{
+                content: '\f00c';
+                display: inline-block;
+                font: normal normal normal 14px/1 FontAwesome;
+                color: $color-green;
+                position: absolute;
+                right: 15px;
+                margin-bottom: 13px;
+                bottom:100%;
+            }
+        }
+    }
+
+
+}
+
+input[type=checkbox]{
+    display: none;
+    &+label{
+        padding-left: 22px;
+        margin-left: 15px;
+        display: inline-block;
+        color: $color-mediumgray;
+        cursor: pointer;
+        &:before{
+            content: '';
+            margin-left: -22px;
+            margin-top: 3px;
+            position: absolute;
+            @include sprite(-82px, 16px, 16px);
+            display: inline-block;
+            cursor: pointer;
+        }
+        a{
+            color: $color-mediumgray;
+            &:hover{
+                color: $color-mediumgray !important;
+            }
+        }
+
+    }
+    &:checked +label{
+        &:before{
+            @include sprite(-98px, 16px, 16px);
+        }
+
+    }
+}
+
+
+.form_title{
+    font-size: $font-size-h;
+    text-align: center;
+    color: $color-black;
+    border-bottom: 1px solid $color-black;
+    padding: 7px 0;
+}
+.form_row{
+    position: relative;
+    &+.form_row{
+        margin-top: 15px;
+    }
+}
 
 //buttons
+.btn {
+    height: 35px;
+    line-height: 35px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: $font-size-h;
+    color: $color-black;
+    background: $color-white;
+    border: 1px solid $color-black;
+    border-bottom-width: 2px;
+    padding: 0 10px;
+    @include animate(.1s);
+
+    &:hover {
+        background: $color-black;
+        color: $color-white !important;
+    }
+
+    &.transparent{
+        background: transparent;
+        color: $color-white;
+        border-color: $color-white;
+        &:hover {
+            background: $color-white;
+            color: $color-black !important;
+        }
+    }
+
+    &.orange{
+        background: transparent;
+        color: $color-orange;
+        border-color: $color-orange;
+        &:hover {
+            background: $color-orange;
+            color: $color-white !important;
+        }
+    }
+}
 
 //blocks
-.grid--container{
-  max-width: $container-width;
+.grid--container {
+    max-width: $container-width;
+}
+
+.inline-block {
+    display: inline-block;
+}
+
+.clearfix:after{
+    content: '';
+    clear: both;
+    display: block;
+}
+section{
+    padding: 60px 0;
+}
+
+//carousel
+.owl-carousel{
+    .owl-stage-outer{
+        @include bg_dotted(transparent, 1, .7, #3a3a3a, .7);
+
+    }
+    .owl-nav{
+        @extend .grid;
+        @extend .grid--container;
+        @include position(50%, 50%);
+
+        .owl-prev, .owl-next{
+            position: absolute;
+        }
+
+        .owl-prev{
+            left:-22px;
+            @include sprite(0px, 22px, 41px);
+        }
+        .owl-next{
+            right:-22px;
+            @include sprite(-41px, 22px, 41px);
+        }
+
+    }
 }

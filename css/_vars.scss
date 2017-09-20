@@ -1,8 +1,10 @@
 //fonts
 $font-family: 'Roboto', sans-serif;
 
+$font-size-xs: 10px;
 $font-size-s: 14px;
 $font-size: 16px;
+$font-size-h: 18px;
 $font-size-m: 20px;
 $font-size-b: 25px;
 $font-size-l: 40px;
@@ -14,11 +16,13 @@ $line-height:24px;
 //colors
 $color-white: #ffffff;
 $color-lightgray: #d6d6d6;
+$color-mediumgray: #b8b8b8;
 $color-gray: #5c5c5c;
 $color-darkgray: #383838;
 $color-black: #000000;
 $color-orange: #ef7f1b;
 $color-green: #23c440;
+$color-red:#e70e3c;
 
 //blocks
 $container-width:980px;

@@ -1,26 +1,105 @@
 @import "../bower_components/flexbox-grid-sass/assets/scss/stylesheet";
 @import "../bower_components/css-spaces/source/spaces";
 @import "../bower_components/components-font-awesome/scss/font-awesome";
+@import "../bower_components/owl.carousel/dist/assets/owl.carousel.min.css";
+
+
 
 @import "vars";
 @import "mixins";
 @import "elements";
 
-header{
-@extend .pv-xxs;
-  .contacts{
+header {
+    position: relative;
+    @extend .pv-xxs;
+    .contacts {
+        a {
+            font-size: $font-size-s;
+            font-weight: 200;
+            @extend .notunderline;
+            & + a {
+                @extend .ml-s;
+            }
+        }
 
-    a{
-      font-size: $font-size-s;
-      font-weight: 200;
-      @extend .notunderline;
-      &+a{
-        @extend .ml-s;
-      }
     }
+    .nav {
+        position: absolute;
+        z-index: 100;
+        width: 100%;
+        top:100%;
+        padding: 33px 0;
 
-  }
-  .phone{
+        @extend .clearfix;
+        ul{
+            @extend .pull-right;
+            li{
+                display: inline-block;
+                a{
+                    text-decoration: none;
+                    font-size: $font-size-h;
+                    color: $color-white;
+                }
+                &+li{
+                    margin-left: 20px;
+                }
+            }
+        }
 
-  }
+    }
+}
+
+
+#slider{
+    position: relative;
+    padding: 0;
+    .overlay{
+        position: absolute;
+        z-index: 10;
+        width: 900px;
+        height: 100%;
+        left: 50%;
+        margin-left: -450px;
+        color: $color-white;
+        .form{
+            @include podlog($color-white, $color-lightgray, 10px);
+            padding: 20px 15px;
+
+        }
+    }
+}
+
+#service{
+    .services{
+        .item{
+            margin: 0 5px;
+            background: $color-white;
+            @include boxshadow(0px 0px 50px -2px $color-lightgray);
+            .inner{
+                padding: 15px;
+                .h3{
+                    margin-bottom: 10px;
+                }
+                .price{
+                    @extend .uppercase;
+                    margin-bottom: 5px;
+                    span{
+                        color:$color-orange;
+                    }
+                }
+            }
+            .more{
+                a{
+                    display: block;
+                    color: $color-white !important;
+                    background: $color-orange;
+                    text-align: center;
+                    line-height: 30px;
+                    height: 30px;
+                    @extend .notunderline;
+                    @extend .uppercase;
+                }
+            }
+        }
+    }
 }

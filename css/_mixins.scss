@@ -1,12 +1,90 @@
-.uppercase{
-  text-transform: uppercase;
+@mixin animate($time:.1s) {
+    -webkit-transition: $time ease-out;
+    -o-transition: $time ease-out;
+    -moz-transition: $time ease-out;
+    transition: $time ease-out;
 }
 
-.underline{
-  text-decoration: underline;
+@mixin position($left:50%, $top:50%){
+    position: absolute;
+    top:$top;
+    left:$left;
+    transform: translate(-$left, -$top);
 }
 
-.notunderline{
-  text-decoration: none;
+@mixin sprite($top:0, $w:0, $h:0){
+    background-image: url("../images/sprite.png");
+    background-repeat: no-repeat;
+    background-position: 0 $top;
+    width: $w;
+    height: $h;
+}
+
+@mixin bg_dotted($color:transparent, $z:0, $opacity:1, $color_after:transparent, $opacity_after:.2){
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: block;
+        z-index: $z;
+        background-image: url("../images/bg_dotted.png");
+        background-repeat: repeat;
+        background-position: center;
+        background-color: $color;
+        opacity: $opacity;
+    }
+    &:after{
+        content: '';
+        position: absolute;
+        top:0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: block;
+        background: $color_after;
+        opacity: $opacity_after;
+    }
+}
+
+@mixin podlog($bg:$color-white, $bg2:$color-lightgray, $offset:5px){
+    background: $bg;
+    position: relative;
+    &:before{
+        content: '';
+        position: absolute;
+        background: $bg2;
+        width: 100%;
+        height: 100%;
+        top:$offset;
+        left: $offset;
+        z-index:-1;
+    }
+}
+
+@mixin icon($icon:''){
+    content: $icon;
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+}
+
+@mixin boxshadow($shadow:''){
+    -webkit-box-shadow: $shadow;
+    -moz-box-shadow: $shadow;
+    box-shadow: $shadow;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+.notunderline {
+    text-decoration: none;
 }
 
